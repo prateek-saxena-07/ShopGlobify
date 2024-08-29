@@ -4,7 +4,7 @@ import CartItem from './CartItem';
 export default function Cart()
 {
     const cartItems = useSelector((state) => state.cart.cartItems);
-
+console.log(cartItems)
     return (
         <>
              <h1>Shopping Cart</h1>
