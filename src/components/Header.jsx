@@ -6,8 +6,13 @@ export default function Header() {
     // console.log('cartItems', cartItem);
     
     return (<>
-        <Link to='/'>Home &nbsp;</Link>
-        <Link to='/cart'>Cart</Link>
+        <header>
+            <nav>
+                <Link to='/'>Home &nbsp;</Link>
+                <Link to='/cart'>Cart</Link>
+                <Link to='/checkout'>&nbsp;Checkout</Link>
+            </nav>
+        </header>
     
     </>);
 }

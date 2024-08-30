@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { addItem, removeItem,clearCart } from '../utils/cartSlice';
+import { addItem, removeItem } from '../utils/cartSlice';
+import { Link } from 'react-router-dom';
+
 
 const CartItem = ({ details }) => {
     const dispatch = useDispatch();
@@ -11,23 +13,22 @@ const CartItem = ({ details }) => {
     const handleRemove = () => {
         dispatch(removeItem({ id: details.id }));
     };
-    const handleClear = () => {
-        dispatch(clearCart())
-    }
+   
 
     return (
-        <div>
-            { console.log(details)}
-            <h2>{details.name}</h2>
-            <p>{details.description}</p>
+        <div style={{border:'10px solid', height:'400px' ,width:'200px'}}>
+            
+            <h3>{details.title}</h3>
             <p>${details.price}</p>
-            <img src={details.images} alt="" height='150px' />
+            <img src={details.images[0]} alt="" height='100px' />
             <p>Quantity: {details.quantity}</p>
-             <button onClick={handleRemove}>-</button>
-            <button onClick={handleAdd}>+</button>
-            <button onClick={handleClear}>Clear cart</button>
+            &nbsp;{details.quantity>1?(<button onClick={handleRemove}>-</button>):( <button onClick={handleRemove}><i className="fa-solid fa-trash-can"></i></button>)}&nbsp;
+            <button onClick={handleAdd}>+</button>&nbsp;
+            
+            
+            
         </div>
-    );
+    ); 
 };
 
 export default CartItem;

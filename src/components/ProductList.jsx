@@ -29,7 +29,7 @@ export default function ProductList() {
 
     return (
         <div>
-            <h1>Product List</h1>
+            <h1>Products List</h1>
             <input
                 type="text"
                 placeholder="Search by name"
@@ -37,7 +37,9 @@ export default function ProductList() {
                 onChange={handleSearch}
                 style={{ marginBottom: '20px', padding: '10px', width: '100%' }}
             />
-            <div>
+            <hr />
+            <br />
+            <div className="container-home">
                 {filteredItems.length > 0 ? (
                     filteredItems.map((product) => (
                         <ProductItem key={product.id} details={product} />
@@ -46,6 +48,7 @@ export default function ProductList() {
                     <p>No products found.</p>
                 )}
             </div>
+            
         </div>
     );
 }
