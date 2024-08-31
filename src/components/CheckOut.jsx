@@ -19,12 +19,13 @@ export default function CheckOut() {
             </div>
             <div style={{ marginTop: '20px' }}>
                 <h3>Total: ${calculateTotal()}</h3>
+                {/* Dummy Button */}
                 <button>CheckOut</button>
             </div>
             <br />
             <br />
-            
-            <Link to='/' className='back-link'>Back to <i class="fa fa-home" aria-hidden="true"></i> </Link>
+
+            <Link to='/' className='back-link'>Back to <i className="fa fa-home" aria-hidden="true"></i> </Link>
         </>
     );
 }

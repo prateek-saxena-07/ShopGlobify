@@ -7,9 +7,9 @@ export default function Header() {
     return (<>
         <header>
             <nav>
-                <Link to='/'>Home &nbsp;</Link>
+                <Link to='/'>Home </Link>
                 <Link to='/cart'>Cart</Link>
-                <Link to='/checkout'>&nbsp;Checkout</Link>
+                <Link to='/checkout'>Checkout</Link>
             </nav>
         </header>
     

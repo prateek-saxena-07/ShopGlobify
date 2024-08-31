@@ -1,13 +1,18 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import NotFound from './components/NotFound.jsx';
 import './index.css';
-import ProductList from './components/ProductList.jsx';
-import ProductDetail from './components/ProductDetail.jsx';
-import Cart from './components/Cart.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import CheckOut from './components/CheckOut.jsx';
+import { BarLoader } from 'react-spinners'
+
+// Lazy loaded components
+const ProductList = lazy(() => import('./components/ProductList.jsx'));
+const ProductDetail = lazy(() => import('./components/ProductDetail.jsx'));
+const Cart = lazy(() => import('./components/Cart.jsx'));
+const CheckOut = lazy(() => import('./components/CheckOut.jsx'));
+
+//Routing
 const appRouter = createBrowserRouter([
   {
     path: '',
@@ -16,30 +21,43 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <ProductList></ProductList>
+        element: (
+          <Suspense fallback={<div><center><BarLoader></BarLoader></center></div>}>
+            <ProductList />
+          </Suspense>
+        ),
       },
-      
       {
         path: '/:product',
-        element: <ProductDetail></ProductDetail>
+        element: (
+          <Suspense fallback={<div><center><BarLoader></BarLoader></center></div>}>
+            <ProductDetail />
+          </Suspense>
+        ),
       },
       {
         path: '/cart',
-        element: <Cart></Cart>
+        element: (
+          <Suspense fallback={<div><center><BarLoader></BarLoader></center></div>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: '/checkout',
-        element:<CheckOut></CheckOut>
-      }
-    ], 
-  }
+        element: (
+          <Suspense fallback={<div><center><BarLoader></BarLoader></center></div>}>
+            <CheckOut />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 ]);
 
-
-
+//Creating Root
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={appRouter} />
-  </StrictMode>,
+  </StrictMode>
 );
-

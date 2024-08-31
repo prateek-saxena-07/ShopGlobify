@@ -35,7 +35,7 @@ export default function Cart()
 
                 
             </div>
-            <Link to='/' className='back-link'>Back to <i class="fa fa-home" aria-hidden="true"></i> </Link>
+            <Link to='/' className='back-link'>Back to <i className="fa fa-home" aria-hidden="true"></i> </Link>
          </>
     )
 }

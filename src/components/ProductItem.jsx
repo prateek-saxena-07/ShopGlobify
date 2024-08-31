@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 
 export default function ProductItem(props) {
     const dispatch = useDispatch();
-    const cartItems = useSelector((state) => state.cart.cartItems);
+    const cartItems = useSelector((state) => state.cart.cartItems);//Access CartItem State to be updated
     const [isAdded, setIsAdded] = useState(false);
 
     // Checks if the item is already in the cart when the component mounts or when cartItems changes
     useEffect(() => {
         const itemAdded = cartItems.some((item) => item.id === props.details.id);
-        setIsAdded(itemAdded);
+        setIsAdded(itemAdded);//For Conditional Rendering of Add button
     }, [cartItems, props.details.id]);
 
+    
     const addToCart = () => {
         if (!isAdded) {
             dispatch(addItem(props.details));

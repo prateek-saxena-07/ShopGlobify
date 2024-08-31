@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+//This Cart slice contains two state :allItems which contains all items that has to be loaded on product list and other one is to be loaded on CartPage and four reducer function to perform various action such as add,remove,clear.
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         allItems: [],
-        cartItems: [], // Cart items include quantities
+        cartItems: [], // Cart items include quantities added in the cart as well
     },
     reducers: {
         addItem: (state, action) => {
